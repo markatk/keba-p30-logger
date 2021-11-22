@@ -5,6 +5,8 @@ use fern::Dispatch;
 use log::{LevelFilter, info};
 use chrono::Local;
 
+mod client;
+
 fn main() {
     // load env variables from .env file
     dotenv::dotenv().ok();
@@ -13,6 +15,8 @@ fn main() {
     configure_logger();
 
     info!("Starting Keba P30 Logger v{}", env!("CARGO_PKG_VERSION"));
+
+    client::run();
 }
 
 fn configure_logger() {
