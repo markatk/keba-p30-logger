@@ -5,6 +5,7 @@ use fern::Dispatch;
 use log::{LevelFilter, info};
 use chrono::Local;
 
+mod wallbox;
 mod client;
 
 fn main() {
