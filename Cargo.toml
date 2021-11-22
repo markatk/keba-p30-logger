@@ -1,0 +1,13 @@
+[package]
+name = "keba-p30-logger"
+description = "A data logger for the Keba P30 wallbox"
+version = "0.1.0"
+edition = "2018"
+authors = ["MarkAtk"]
+license = "GPLv3"
+repository = "https://github.com/markatk/keba-p30-logger"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
