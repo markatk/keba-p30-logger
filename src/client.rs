@@ -1,8 +1,8 @@
 use std::{convert::TryFrom, env};
-use log::{info};
 use modbus::{Client as ModbusClient, tcp};
 
 use crate::wallbox::{CableState, ChargingState, Wallbox};
+use crate::database::Database;
 
 struct Client {
     client: modbus::Transport
@@ -73,10 +73,12 @@ impl Client {
     }
 }
 
-pub fn run() {
+pub fn run(db: &mut Database) {
     let target_ip = env::var("TARGET_IP").unwrap();
 
     let mut client = Client::new(&target_ip).unwrap();
 
-    info!("Register 1014: {:?}", client.read_wallbox().unwrap());
+    let wallbox = client.read_wallbox().unwrap();
+
+    db.add_wallbox_data(&wallbox);
 }

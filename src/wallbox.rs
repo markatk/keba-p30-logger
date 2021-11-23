@@ -1,6 +1,6 @@
 use std::convert::TryFrom;
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub enum ChargingState {
     StartUp = 0,
     NotReady = 1,
@@ -33,7 +33,7 @@ impl TryFrom<u32> for ChargingState {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub enum CableState {
     NoCable = 0,
     CableInStation = 1,

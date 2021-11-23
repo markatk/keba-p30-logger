@@ -16,3 +16,4 @@ log = "0.4.14"
 chrono = "0.4.19"
 dotenv = "0.15.0"
 modbus = "1.0.4"
+diesel = { version = "1.4.8", features = ["postgres"] }

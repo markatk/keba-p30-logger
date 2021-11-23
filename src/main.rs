@@ -1,23 +1,30 @@
 #![allow(clippy::bool_comparison)]
 
+#[macro_use]
+extern crate diesel;
+
 use std::env;
 use fern::Dispatch;
 use log::{LevelFilter, info};
 use chrono::Local;
 
+mod schema;
+mod models;
 mod wallbox;
 mod client;
+mod database;
 
 fn main() {
     // load env variables from .env file
     dotenv::dotenv().ok();
 
-    // configure logger
     configure_logger();
+
+    let mut db = database::Database::new().expect("Unable to connecto to database");
 
     info!("Starting Keba P30 Logger v{}", env!("CARGO_PKG_VERSION"));
 
-    client::run();
+    client::run(&mut db);
 }
 
 fn configure_logger() {
